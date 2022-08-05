@@ -9,7 +9,7 @@ export default {
                 <div >
                     <div class="form-group">
                         <label for="nameInput">Name</label>
-                        <input name="name" type="text" class="form-control" id="nameInput">
+                        <input name="name" type="text" class="form-control" id="nameInput" placeholder="Enter Name">
                     </div>
         
                     <div class="form-group">
