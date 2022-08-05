@@ -42,7 +42,6 @@ export default {
                     },
                     dataFilter: function(data){
                         var json = JSON.parse( data ).data;
-                        console.log(json)
                         return JSON.stringify( json); // return JSON string
                     }
                 },
