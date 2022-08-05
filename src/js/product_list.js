@@ -27,6 +27,7 @@ let productList = {
                 pageLength: 10,
                 order:[0,'asc'],
                 searching: true,
+                async: true,
                 columnDefs: [
                     {"className": "text-center", "targets": "_all"}
                 ],
@@ -46,6 +47,7 @@ let productList = {
                         response = JSON.parse( response )
                         if (response.success) return JSON.stringify( response.data);
                         else {
+                            localStorage.removeItem('authorization')
                             pageLoader.loadLoginPage()
                         }
                     },
