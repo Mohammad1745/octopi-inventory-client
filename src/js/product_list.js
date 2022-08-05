@@ -23,7 +23,8 @@ export default {
                 processing: true,
                 serverSide: true,
                 pageLength: 10,
-                order:[1,'asc'],
+                order:[0,'asc'],
+                searching: true,
                 columnDefs: [
                     {"className": "text-center", "targets": "_all"}
                 ],
@@ -40,13 +41,19 @@ export default {
                         authorization: authorization.tokenType+" "+authorization.token
                     },
                     dataFilter: function(data){
-                        var json = JSON.parse( data );
-                        json.recordsTotal = json.data.length;
-                        json.recordsFiltered = json.data.length;
+                        var json = JSON.parse( data ).data;
                         console.log(json)
-                        return JSON.stringify( json ); // return JSON string
+                        return JSON.stringify( json); // return JSON string
                     }
-                }
+                },
+                language: {
+                    paginate: {
+                        next: 'Next &#8250;',
+                        previous: '&#8249; Previous'
+                    },
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search...",
+                },
             })
         }
     }
