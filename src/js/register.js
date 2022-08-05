@@ -1,6 +1,4 @@
-import login from "./login";
-import product from "./product";
-import product_list from "./product_list";
+import pageLoader from "./page_loader";
 
 export default {
     template : `
@@ -54,9 +52,7 @@ export default {
             })
             function responseHandler  (response) {
                 if (response.success) {
-                    $('#app').empty()
-                    $('#app').append(login.template)
-                    login.script.loginButtonHandler()
+                    pageLoader.loadLoginPage()
                 }
             }
         }
