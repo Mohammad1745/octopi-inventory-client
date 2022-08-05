@@ -1,4 +1,5 @@
 import pageLoader from "../page_loader";
+import alert from "./alert";
 
 export default {
     template : `
@@ -53,6 +54,10 @@ export default {
             function responseHandler  (response) {
                 if (response.success) {
                     pageLoader.loadLoginPage()
+                    alert.script.showAlert('success', response.message)
+                }else {
+                    console.log(response)
+                    alert.script.showAlert('error', response.message)
                 }
             }
         }

@@ -1,4 +1,5 @@
 import pageLoader from '../page_loader'
+import alert from "./alert";
 
 let login = {
     template : `
@@ -45,7 +46,11 @@ let login = {
             function responseHandler  (response) {
                 if (response.success) {
                     localStorage.setItem('authorization', JSON.stringify(response.data.authorization))
-                   pageLoader.loadProductPage()
+                    pageLoader.loadProductPage()
+                    alert.script.showAlert('success', response.message)
+                }else {
+                    console.log(response)
+                    alert.script.showAlert('error', response.message)
                 }
             }
         },

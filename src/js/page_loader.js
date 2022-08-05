@@ -2,8 +2,15 @@ import product from "./components/product";
 import product_list from "./components/product_list";
 import login from "./components/login";
 import register from "./components/register";
+import alert from "./components/alert";
 
 let pageLoader = {
+    loadAlert: () => {
+        $('#alert').empty()
+        $('#alert').append(alert.template)
+        $('#alert_success').hide()
+        $('#alert_danger').hide()
+    },
     loadLoginPage: () => {
         $('#app').empty()
         $('#app').append(login.template)

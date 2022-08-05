@@ -1,4 +1,5 @@
 import pageLoader from "../page_loader";
+import alert from "./alert";
 
 let productList = {
     template : `
@@ -47,6 +48,7 @@ let productList = {
                         response = JSON.parse( response )
                         if (response.success) return JSON.stringify( response.data);
                         else {
+                            alert.script.showAlert('error', response.message)
                             localStorage.removeItem('authorization')
                             pageLoader.loadLoginPage()
                         }
