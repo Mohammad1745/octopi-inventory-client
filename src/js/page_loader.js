@@ -1,7 +1,7 @@
-import product from "./product";
-import product_list from "./product_list";
-import login from "./login";
-import register from "./register";
+import product from "./components/product";
+import product_list from "./components/product_list";
+import login from "./components/login";
+import register from "./components/register";
 
 let pageLoader = {
     loadLoginPage: () => {

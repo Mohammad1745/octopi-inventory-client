@@ -1,5 +1,5 @@
 import product_list from "./product_list";
-import pageLoader from "./page_loader";
+import pageLoader from "../page_loader";
 
 export default {
     template : `

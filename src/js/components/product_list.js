@@ -1,4 +1,4 @@
-import pageLoader from "./page_loader";
+import pageLoader from "../page_loader";
 
 let productList = {
     template : `
