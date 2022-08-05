@@ -1,4 +1,5 @@
 import product_list from "./product_list";
+import pageLoader from "./page_loader";
 
 export default {
     template : `
@@ -51,9 +52,7 @@ export default {
             function responseHandler (response) {
                 console.log(response)
                 if (response.success) {
-                    $('#app').children().last().remove();
-                    $('#app').append(product_list.template)
-                    product_list.script.loadProductList()
+                    pageLoader.loadProductPage()
                 }
             }
         },

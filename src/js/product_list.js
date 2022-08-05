@@ -1,4 +1,6 @@
-export default {
+import pageLoader from "./page_loader";
+
+let productList = {
     template : `
         <div class="row justify-content-md-center" style="margin-top: 100px">
             <div class="col-md-12">
@@ -40,10 +42,13 @@ export default {
                     headers: {
                         authorization: authorization.tokenType+" "+authorization.token
                     },
-                    dataFilter: function(data){
-                        var json = JSON.parse( data ).data;
-                        return JSON.stringify( json); // return JSON string
-                    }
+                    dataFilter: function(response){
+                        response = JSON.parse( response )
+                        if (response.success) return JSON.stringify( response.data);
+                        else {
+                            pageLoader.loadLoginPage()
+                        }
+                    },
                 },
                 language: {
                     paginate: {
@@ -54,6 +59,7 @@ export default {
                     searchPlaceholder: "Search...",
                 },
             })
-        }
+        },
     }
 }
+export default productList

@@ -1,8 +1,6 @@
-import register from "./register";
-import product from "./product";
-import product_list from "./product_list";
+import pageLoader from './page_loader'
 
-export default {
+let login = {
     template : `
         <div class="row justify-content-md-center" style="margin-top: 100px">
             <div class="col-md-6">
@@ -23,6 +21,12 @@ export default {
         </div>
     `,
     script: {
+        checkAuth: () => {
+            let authorization = JSON.parse(localStorage.getItem('authorization'))
+            if (authorization) {
+                pageLoader.loadProductPage()
+            }
+        },
         loginButtonHandler: () => {
             $('#login_btn').on('click', event => {
                 let formData = {
@@ -41,14 +45,10 @@ export default {
             function responseHandler  (response) {
                 if (response.success) {
                     localStorage.setItem('authorization', JSON.stringify(response.data.authorization))
-
-                    $('#app').empty()
-                    $('#app').append(product.template)
-                    $('#app').append(product_list.template)
-                    product_list.script.loadProductList()
-                    product.script.addButtonHandler()
+                   pageLoader.loadProductPage()
                 }
             }
         },
     }
 }
+export default login
